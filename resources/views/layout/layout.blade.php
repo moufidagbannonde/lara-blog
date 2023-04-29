@@ -14,10 +14,10 @@
     <!-- Navbar -->
     <nav class="navbar bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="#">Lara-Blog</a>
+            <a class="navbar-brand" href="/posts">Lara-Blog</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Create</a>
+                    <a class="nav-link" href="/login">Sign In</a>
                 </li>
             </ul>
         </div>

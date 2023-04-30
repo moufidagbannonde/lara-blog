@@ -12,7 +12,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // Order by id descending
+        $posts = Post::orderBy('id', 'desc')->get();
         return view('index', compact('posts'));
     }
 
@@ -40,29 +41,24 @@ class BlogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        $post = Post::findOrFail($id);
-        
+    public function show(Post $post)
+    {        
         return view('show', compact('post'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $post = Post::findOrFail($id);
-        
+    public function edit(Post $post)
+    {        
         return view('edit', compact('post'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        $post = Post::findOrFail($id);
         $post->name = $request->name;
         $post->description = $request->description;
 
@@ -73,9 +69,9 @@ class BlogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        Post::findOrFail($id)->delete();
+        $post->delete();
 
         return redirect('/posts');
     }

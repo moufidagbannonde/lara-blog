@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
+use App\Models\Category;
 
 class BlogController extends Controller
 {
@@ -15,7 +16,7 @@ class BlogController extends Controller
     {
         // Order by id descending
         $posts = Post::orderBy('id', 'desc')->get();
-        return view('index', compact('posts'));
+        return view('index')->with('posts', $posts);
     }
 
     /**
@@ -23,7 +24,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $categories = Category::all();
+        return view('create')->with('categories', $categories);
     }
 
     /**
@@ -31,19 +33,9 @@ class BlogController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        // $post = new Post();
-        // $post->name = $request->name;
-        // $post->description = $request->description;
-        // $post->save();
-
         // Retrieve the validated input data...
-        // $validated = $request->validated();
-
-        Post::create([
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
-
+        $validated = $request->validated();
+        Post::create($validated);
         return redirect('/posts');
     }
 
@@ -51,16 +43,20 @@ class BlogController extends Controller
      * Display the specified resource.
      */
     public function show(Post $post)
-    {        
-        return view('show', compact('post'));
+    {
+        // dd($post->categories);
+        return view('show')->with('post', $post);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
-    {        
-        return view('edit', compact('post'));
+    {
+        $categories = Category::all();
+        return view('edit')
+            ->with('categories', $categories)
+            ->with('post', $post);
     }
 
     /**
@@ -68,15 +64,8 @@ class BlogController extends Controller
      */
     public function update(StorePostRequest $request, Post $post)
     {
-        // $post->name = $request->name;
-        // $post->description = $request->description;
-        // $post->save();
-
-        $post->update([
-            'name' => $request->name,
-            'description' => $request->description
-        ]);
-
+        $validated = $request->validated();
+        $post->update($validated);
         return redirect('/posts');
     }
 

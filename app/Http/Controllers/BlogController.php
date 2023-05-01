@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePostRequest;
 
 class BlogController extends Controller
 {
@@ -28,13 +29,21 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        $post = new Post();
-        $post->name = $request->name;
-        $post->description = $request->description;
+        // $post = new Post();
+        // $post->name = $request->name;
+        // $post->description = $request->description;
+        // $post->save();
 
-        $post->save();
+        // Retrieve the validated input data...
+        // $validated = $request->validated();
+
+        Post::create([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
         return redirect('/posts');
     }
 
@@ -57,12 +66,17 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostRequest $request, Post $post)
     {
-        $post->name = $request->name;
-        $post->description = $request->description;
+        // $post->name = $request->name;
+        // $post->description = $request->description;
+        // $post->save();
 
-        $post->save();
+        $post->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
         return redirect('/posts');
     }
 

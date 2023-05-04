@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 
 /*
@@ -14,4 +15,6 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-Route::resource('/posts', BlogController::class);
+Route::resource('/posts', BlogController::class)->middleware('auth');
+
+Route::get('/logout', [AuthController::class, 'logout']);

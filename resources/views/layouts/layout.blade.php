@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar bg-body-tertiary">
@@ -17,11 +19,12 @@
             <a class="navbar-brand" href="/posts">Lara-Blog</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Sign In</a>
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
     @yield('content')
 </body>
+
 </html>

@@ -5,6 +5,7 @@
     <h1 class="text-center mb-3">Create New Post</h1>
     <form action="/posts" method="post">
         @csrf
+        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         <div class="mb-3">
             <label for="name" class="form-label">Title</label>
             <input type="text" class="form-control" name="name" placeholder="Enter title" value="{{ old('name') }}">

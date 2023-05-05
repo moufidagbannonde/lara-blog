@@ -15,7 +15,9 @@ class BlogController extends Controller
     public function index()
     {
         // Order by id descending
-        $posts = Post::orderBy('id', 'desc')->get();
+        $posts = Post::where('user_id', auth()->id())
+            ->orderBy('id', 'desc')
+            ->get();
         return view('index')->with('posts', $posts);
     }
 
@@ -44,7 +46,12 @@ class BlogController extends Controller
      */
     public function show(Post $post)
     {
-        // dd($post->categories);
+        // if (auth()->id() != $post->user_id) {
+        //     abort(404);
+        // }
+
+        $this->authorize('view', $post);
+
         return view('show')->with('post', $post);
     }
 
@@ -53,6 +60,8 @@ class BlogController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('view', $post);
+
         $categories = Category::all();
         return view('edit')
             ->with('categories', $categories)

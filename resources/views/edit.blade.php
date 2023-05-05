@@ -6,6 +6,7 @@
     <form action="/posts/{{ $post->id }}" method="post">
         @csrf
         @method('PUT')
+        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         <div class="mb-3">
             <label for="name" class="form-label">Title</label>
             <input type="text" class="form-control" name="name" placeholder="Enter title" value="{{ old('name', $post->name) }}">

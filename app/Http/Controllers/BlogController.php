@@ -27,7 +27,8 @@ class BlogController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('create')->with('categories', $categories);
+        return view('create')
+            ->with('categories', $categories);
     }
 
     /**
@@ -38,7 +39,8 @@ class BlogController extends Controller
         // Retrieve the validated input data...
         $validated = $request->validated();
         Post::create($validated);
-        return redirect('/posts');
+        return redirect('/posts')
+            ->with('msg', 'Post created successfully!');
     }
 
     /**
@@ -75,7 +77,8 @@ class BlogController extends Controller
     {
         $validated = $request->validated();
         $post->update($validated);
-        return redirect('/posts');
+        return redirect('/posts')
+            ->with('msg', 'Post updated successfully!');
     }
 
     /**
@@ -85,6 +88,7 @@ class BlogController extends Controller
     {
         $post->delete();
 
-        return redirect('/posts');
+        return redirect('/posts')
+            ->with('msg', 'Post deleted successfully!');
     }
 }

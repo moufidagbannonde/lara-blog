@@ -40,7 +40,7 @@ class BlogController extends Controller
         $validated = $request->validated();
         Post::create($validated);
         return redirect('/posts')
-            ->with('msg', 'Post created successfully!');
+            ->with('msg', config('message.msg.created'));
     }
 
     /**
@@ -78,7 +78,7 @@ class BlogController extends Controller
         $validated = $request->validated();
         $post->update($validated);
         return redirect('/posts')
-            ->with('msg', 'Post updated successfully!');
+            ->with('msg', config('message.msg.updated'));
     }
 
     /**
@@ -89,6 +89,6 @@ class BlogController extends Controller
         $post->delete();
 
         return redirect('/posts')
-            ->with('msg', 'Post deleted successfully!');
+            ->with('msg', config('message.msg.deleted'));
     }
 }

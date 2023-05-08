@@ -18,7 +18,6 @@ use App\Http\Controllers\BlogController;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::resource('/posts', BlogController::class)->middleware('auth');
-
-Route::get('/logout', [AuthController::class, 'logout']);

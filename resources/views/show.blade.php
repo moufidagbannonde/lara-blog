@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <p class="card-text">{{ $post->description }}</p>
                     <p class="card-text fw-semibold fst-italic">Category: {{ $post->categories->name }}</p>
-                    <a href="/posts" class="btn btn-success">Back</a>
+                    <a href="{{ route('posts.index') }}" class="btn btn-success">Back</a>
                 </div>
             </div>
         </div>

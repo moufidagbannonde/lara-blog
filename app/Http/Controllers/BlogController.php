@@ -17,7 +17,7 @@ class BlogController extends Controller
         // Order by id descending
         $posts = Post::where('user_id', auth()->id())
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(4);
         return view('index')->with('posts', $posts);
     }
 

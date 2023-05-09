@@ -28,5 +28,8 @@
         </div>
         @endforeach
     </div>
+    <div class="mt-3 float-end">
+        {{ $posts->links() }}
+    </div>
 </div>
 @endsection

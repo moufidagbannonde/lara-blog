@@ -27,8 +27,10 @@ class BlogController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $status = ['public', 'private'];
         return view('create')
-            ->with('categories', $categories);
+            ->with('categories', $categories)
+            ->with('status', $status);
     }
 
     /**
@@ -65,8 +67,11 @@ class BlogController extends Controller
         $this->authorize('view', $post);
 
         $categories = Category::all();
+        $status = ['public', 'private'];
+
         return view('edit')
             ->with('categories', $categories)
+            ->with('status', $status)
             ->with('post', $post);
     }
 

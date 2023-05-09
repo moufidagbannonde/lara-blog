@@ -36,7 +36,20 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <button type="submit" class="btn btn-primary">Edit Post</button>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-select" name="status">
+                <option selected>Status</option>
+                @foreach($status as $s)
+                <option value="{{ $s }}" {{ $s === $post->status ? "selected" : "" }}>{{ $s }}</option>
+                @endforeach
+            </select>
+        </div>
+        @error('status')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        <button type="submit" class="btn btn-primary mb-3">Edit Post</button>
     </form>
 </div>
 @endsection

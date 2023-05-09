@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProfileController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,4 @@ Route::get('/', function () {
 Route::get('/logout', [AuthController::class, 'logout']);
 
 Route::resource('/posts', BlogController::class)->middleware('auth');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');

@@ -15,10 +15,11 @@ class BlogController extends Controller
     public function index()
     {
         // Order by id descending
-        $posts = Post::where('user_id', auth()->id())
+        $posts = Post::where('status', 'public')
             ->orderBy('id', 'desc')
             ->simplePaginate(4);
-        return view('index')->with('posts', $posts);
+
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -50,12 +51,9 @@ class BlogController extends Controller
      */
     public function show(Post $post)
     {
-        // if (auth()->id() != $post->user_id) {
-        //     abort(404);
-        // }
-
-        $this->authorize('view', $post);
-
+        if (auth()->id() != $post->user_id and $post->status === 'private') {
+            abort(404);
+        }
         return view('show')->with('post', $post);
     }
 

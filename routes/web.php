@@ -22,5 +22,9 @@ Route::get('/', function () {
 });
 Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::resource('/posts', BlogController::class)->middleware('auth');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::resource('/profile', ProfileController::class)->middleware('auth');
+
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/posts', 'index')->name('posts.index');
+    Route::get('/posts/{post}', 'show')->name('posts.show');
+});

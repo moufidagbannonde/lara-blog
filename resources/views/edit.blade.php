@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-3">
     <h1 class="text-center mb-3">Edit Post</h1>
-    <form action="/posts/{{ $post->id }}" method="post">
+    <form action="/profile/{{ $post->id }}" method="post">
         @csrf
         @method('PUT')
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">

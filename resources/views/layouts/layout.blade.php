@@ -22,7 +22,7 @@
             <ul class="nav justify-content-end">
                 <li class="nav-item">
                     <p class="d-inline">Welcome, {{ Auth::user()->name }}</p>
-                    <a class="d-inline nav-link" href="{{ route('profile') }}">Profile</a>
+                    <a class="d-inline nav-link" href="{{ route('profile.index') }}">Profile</a>
                     <a class="d-inline nav-link" href="/logout">Logout</a>
                 </li>
             </ul>

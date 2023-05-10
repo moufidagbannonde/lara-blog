@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <a href="{{ route('posts.create') }}" class="btn btn-primary">New Post</a>
+
     <div class="row">
         @foreach($posts as $post)
         <div class="col-md-6 mt-3">

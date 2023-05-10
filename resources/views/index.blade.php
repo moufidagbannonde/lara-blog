@@ -8,17 +8,20 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <a href="{{ route('posts.create') }}" class="btn btn-primary">New Post</a>
+    <a href="{{ route('profile.create') }}" class="btn btn-primary">New Post</a>
     <div class="row">
         @foreach($posts as $post)
         <div class="col-md-6 mt-3">
             <div class="card">
-                <h5 class="card-header">{{ $post->name }}</h5>
+                <div class="card-header">
+                    <h5 class="d-inline card-title">{{ $post->name }}</h5>
+                    <p class="float-end text-muted fst-italic">Status: {{ $post->status }}</p>
+                </div>
                 <div class="card-body">
                     <p class="card-text">{{ $post->description }}</p>
-                    <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-success">View</a>
-                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
-                    <form action="{{ route('posts.destroy', ['post' => $post->id]) }}" method="post" class="d-inline">
+                    <a href="{{ route('profile.show', ['profile' => $post->id]) }}" class="btn btn-success">View</a>
+                    <a href="{{ route('profile.edit', ['profile' => $post->id]) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{ route('profile.destroy', ['profile' => $post->id]) }}" method="post" class="d-inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

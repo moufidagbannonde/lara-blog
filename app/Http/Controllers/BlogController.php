@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 
 class BlogController extends Controller
 {
@@ -20,6 +21,11 @@ class BlogController extends Controller
         if (auth()->id() != $post->user_id and $post->status === 'private') {
             abort(404);
         }
-        return view('posts.show')->with('post', $post);
+
+        $comments = Comment::all();
+
+        return view('posts.show')
+            ->with('post', $post)
+            ->with('comments', $comments);
     }
 }

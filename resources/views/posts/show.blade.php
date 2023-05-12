@@ -14,8 +14,43 @@
                     <p class="card-text fw-semibold fst-italic">Category: {{ $post->categories->name }}</p>
                     <a href="{{ route('posts.index') }}" class="btn btn-success">Back</a>
                 </div>
+                <div style="max-height: 260px;" class="card-footer overflow-auto">
+                    <div class="card-body p-4">
+                        <div class="form-outline mb-4">
+                            <form class="d-flex" action="/comments" method="post">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" name="post_id" value="{{$post->id}}">
+                                <input class="form-control me-2" type="text" name="comment" placeholder="Write a comment...">
+                                <button class="btn btn-outline-success" type="submit">
+                                    <i class="fa-regular fa-paper-plane"></i>
+                                </button>
+                            </form>
+                        </div>
+
+                        @foreach($comments as $comment)
+                        @if($post->id === $comment->post_id)
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p>{{ $comment->users->name }}</p>
+                                    <span class="small text-muted fst-italic">{{ $comment->created_at }}</span>
+                                </div>
+                                <hr class="mt-0">
+                                <p>{{ $comment->comment }}</p>
+                                @if($comment->user_id === Auth::user()->id)
+                                <p class="small mb-0">
+                                    <a href="" class="link-grey">Edit</a> •
+                                    <a href="" class="link-grey">Delete</a>
+                                </p>
+                                @endif
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

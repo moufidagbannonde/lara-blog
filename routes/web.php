@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
@@ -17,14 +18,24 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 |
 */
 
+// Auth Routes
 Route::get('/', function () {
     return view('auth.login');
 });
 Route::get('/logout', [AuthController::class, 'logout']);
 
+// Profile Routes
 Route::resource('/profile', ProfileController::class)->middleware('auth');
 
+// Blogs Routes
 Route::controller(BlogController::class)->group(function () {
     Route::get('/posts', 'index')->name('posts.index');
     Route::get('/posts/{post}', 'show')->name('posts.show');
+});
+
+// Comment Routes
+Route::controller(CommentController::class)->group(function () {
+    Route::post('/comments', 'store')->name('comments.store');
+    Route::put('/comments/{comment}', 'update')->name('comments.update');
+    Route::delete('/comments/{comment}', 'destroy')->name('comments.destroy');
 });

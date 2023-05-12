@@ -17,7 +17,7 @@ class ProfileController extends Controller
         $posts = Post::where('user_id', auth()->id())
             ->orderBy('id', 'desc')
             ->simplePaginate(4);
-        return view('index')->with('posts', $posts);
+        return view('profile.index')->with('posts', $posts);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProfileController extends Controller
     {
         $categories = Category::all();
         $status = ['public', 'private'];
-        return view('create')
+        return view('profile.create')
             ->with('categories', $categories)
             ->with('status', $status);
     }
@@ -52,7 +52,7 @@ class ProfileController extends Controller
         if (auth()->id() != $profile->user_id) {
             abort(404);
         }
-        return view('show')->with('post', $profile);
+        return view('profile.show')->with('post', $profile);
     }
 
     /**
@@ -65,7 +65,7 @@ class ProfileController extends Controller
         $categories = Category::all();
         $status = ['public', 'private'];
 
-        return view('edit')
+        return view('profile.edit')
             ->with('categories', $categories)
             ->with('status', $status)
             ->with('post', $profile);

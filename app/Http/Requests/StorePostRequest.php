@@ -35,7 +35,8 @@ class StorePostRequest extends FormRequest
         return [
             'name.required' => 'A title is required',
             'description.required' => 'A description is required',
-            'category_id.required' => 'A category is required'
+            'category_id.required' => 'A category is required',
+            'status.required' => 'A status is required'
         ];
     }
 }

@@ -22,7 +22,7 @@ class BlogController extends Controller
             abort(404);
         }
 
-        $comments = Comment::all();
+        $comments = Comment::orderBy('id', 'desc')->get();
 
         return view('posts.show')
             ->with('post', $post)

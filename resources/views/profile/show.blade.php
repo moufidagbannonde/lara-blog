@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ $post->description }}</p>
-                    <p class="card-text fw-semibold fst-italic">Category: {{ $post->categories->name }}</p>
+                    <p class="card-text fw-semibold fst-italic">Category: {{ $post->category }}</p>
                     <a href="{{ route('profile.index') }}" class="btn btn-success">Back</a>
                 </div>
             </div>

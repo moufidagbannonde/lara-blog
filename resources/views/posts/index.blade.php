@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-3">
     @if (session('msg'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('msg') }}
@@ -12,7 +12,7 @@
     <div class="row">
         @foreach($posts as $post)
         <div class="col-md-6 mt-3">
-            <div class="card">
+            <div class="card" style="height: 250px;">
                 <div class="card-header">
                     <h5 class="card-title d-inline">{{ $post->name }}</h5>
                     <p class="float-end text-muted fst-italic">Created by {{ $post->users->name }}</p>

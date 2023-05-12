@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('category_id');
+            $table->enum('category', ['general', 'career', 'database', 'server', 'programming', 'design pattern', 'soft skill']);
         });
     }
 

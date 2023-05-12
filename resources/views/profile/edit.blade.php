@@ -25,14 +25,14 @@
 
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
-            <select class="form-select" name="category_id">
+            <select class="form-select" name="category">
                 <option selected disabled>Select Category</option>
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}" {{$category->id === $post->category_id ? "selected" : ""}}>{{ $category->name }}</option>
+                <option value="{{ $category }}" {{$category === $post->category ? "selected" : ""}}>{{ $category }}</option>
                 @endforeach
             </select>
         </div>
-        @error('category_id')
+        @error('category')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 

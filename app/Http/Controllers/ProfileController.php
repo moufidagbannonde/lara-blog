@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequest;
 
@@ -25,8 +26,10 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        $categories = ['general', 'career', 'database', 'server', 'programming', 'design pattern', 'soft skill'];
+
         $status = ['public', 'private'];
+
         return view('profile.create')
             ->with('categories', $categories)
             ->with('status', $status);
@@ -37,8 +40,10 @@ class ProfileController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        // Retrieve the validated input data...
         $validated = $request->validated();
+        // Convert category to lowercase
+        $validated['category'] = Str::lower($validated['category']);
+
         Post::create($validated);
         return redirect('/profile')
             ->with('msg', config('message.msg.created'));
@@ -62,12 +67,13 @@ class ProfileController extends Controller
     {
         $this->authorize('view', $profile);
 
-        $categories = Category::all();
+        $categories = ['general', 'career', 'database', 'server', 'programming', 'design pattern', 'soft skill'];
+
         $status = ['public', 'private'];
 
         return view('profile.edit')
-            ->with('categories', $categories)
             ->with('status', $status)
+            ->with('categories', $categories)
             ->with('post', $profile);
     }
 

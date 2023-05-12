@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ $post->description }}</p>
-                    <p class="card-text fw-semibold fst-italic">Category: {{ $post->categories->name }}</p>
+                    <p class="card-text fw-semibold fst-italic">Category: {{ $post->category }}</p>
                     <a href="{{ route('posts.index') }}" class="btn btn-success">Back</a>
                 </div>
                 <div style="max-height: 260px;" class="card-footer overflow-auto">

@@ -41,8 +41,6 @@ class ProfileController extends Controller
     public function store(StorePostRequest $request)
     {
         $validated = $request->validated();
-        // Convert category to lowercase
-        $validated['category'] = Str::lower($validated['category']);
 
         Post::create($validated);
         return redirect('/profile')

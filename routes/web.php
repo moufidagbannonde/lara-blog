@@ -28,10 +28,12 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::resource('/profile', ProfileController::class)->middleware('auth');
 
 // Blogs Routes
-Route::controller(BlogController::class)->group(function () {
-    Route::get('/posts', 'index')->name('posts.index');
-    Route::get('/posts/{post}', 'show')->name('posts.show');
-});
+Route::controller(BlogController::class)
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/posts', 'index')->name('posts.index');
+        Route::get('/posts/{post}', 'show')->name('posts.show');
+    });
 
 // Comment Routes
 Route::controller(CommentController::class)->group(function () {

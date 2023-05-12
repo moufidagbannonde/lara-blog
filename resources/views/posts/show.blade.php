@@ -40,8 +40,12 @@
                                 <p>{{ $comment->comment }}</p>
                                 @if($comment->user_id === Auth::user()->id)
                                 <p class="small mb-0">
-                                    <a href="" class="link-grey">Edit</a> •
-                                    <a href="" class="link-grey">Delete</a>
+
+                                <form action="{{ route('comments.destroy', ['comment' => $comment->id]) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
                                 </p>
                                 @endif
                             </div>

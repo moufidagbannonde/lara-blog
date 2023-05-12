@@ -23,18 +23,12 @@ class CommentController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return back();
     }
 }

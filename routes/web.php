@@ -36,6 +36,5 @@ Route::controller(BlogController::class)->group(function () {
 // Comment Routes
 Route::controller(CommentController::class)->group(function () {
     Route::post('/comments', 'store')->name('comments.store');
-    Route::put('/comments/{comment}', 'update')->name('comments.update');
     Route::delete('/comments/{comment}', 'destroy')->name('comments.destroy');
 });

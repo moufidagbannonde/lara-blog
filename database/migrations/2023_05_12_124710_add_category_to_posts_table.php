@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->enum('category', ['general', 'career', 'database', 'server', 'programming', 'design pattern', 'soft skill']);
+            $table->enum('category', ['general', 'career', 'database', 'server', 'programming', 'design pattern', 'soft skill'])
+                ->default('general');
         });
     }
 

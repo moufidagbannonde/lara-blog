@@ -3,6 +3,7 @@ Lara-Blog
 </h1>
 
 ## Project setup
+### Install dependencies
 
 ```
 composer install
@@ -14,16 +15,14 @@ composer install
 npm install
 ```
 
-### Compiles and hot-reloads for development
-
-```
-npm run dev
-```
-
-### Compiles and minifies for production
-
 ```
 npm run build
+```
+
+### Generate key
+
+```
+php artisan key:generate
 ```
 
 ### Migrate database
@@ -37,3 +36,14 @@ php artisan migrate
 ```
 php artisan serve
 ```
+
+## Features
+
+### Profile Panel
+
+-   Posts Management (CRUD)
+
+### Posts Panel
+
+-   View Public Posts
+-   Comments

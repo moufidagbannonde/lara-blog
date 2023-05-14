@@ -34,7 +34,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
                                     <p>{{ $comment->users->name }}</p>
-                                    <span class="small text-muted fst-italic">{{ $comment->created_at }}</span>
+                                    <span class="small text-muted fst-italic">{{ substr($comment->created_at, 0, 10) }}</span>
                                 </div>
                                 <hr class="mt-0">
                                 <p>{{ $comment->comment }}</p>

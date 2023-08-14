@@ -11,7 +11,7 @@
 
     <div class="row">
         @foreach($posts as $post)
-        <div class="col-md-6 mt-3">
+        <div class="col-md-4 mt-3">
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title d-inline">{{ $post->name }}</h5>

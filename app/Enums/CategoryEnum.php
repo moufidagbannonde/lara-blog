@@ -8,6 +8,7 @@ enum CategoryEnum: string
     case Career = 'career';
     case Database = 'database';
     case Server = 'server';
+    case Programming = 'programming';
     case DesignPattern = 'design pattern';
     case SoftSkill = 'soft skill';
 }

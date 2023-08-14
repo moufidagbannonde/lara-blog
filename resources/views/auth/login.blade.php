@@ -6,9 +6,9 @@
 
         <x-validation-errors class="mb-4" />
 
-        @if (session('status'))
+        @if (session('message'))
         <div class="mb-4 font-medium text-sm text-green-600">
-            {{ session('status') }}
+            {{ session('message') }}
         </div>
         @endif
 
@@ -41,6 +41,7 @@
                     {{ __('Log in') }}
                 </x-button>
             </div>
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{route('password.request')}}">Forgot Password?</a>
         </form>
     </x-authentication-card>
 </x-guest-layout>

@@ -11,7 +11,7 @@
     <a href="{{ route('profile.create') }}" class="btn btn-primary">New Post</a>
     <div class="row">
         @foreach($posts as $post)
-        <div class="col-md-6 mt-3">
+        <div class="col-md-4 mt-3">
             <div class="card">
                 <div class="card-header">
                     <h5 class="d-inline card-title">{{ $post->name }}</h5>

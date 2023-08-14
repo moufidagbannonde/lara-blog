@@ -1,8 +1,7 @@
-<h1 align="center">
-Lara-Blog
-</h1>
+# Blog website with Laravel for learning purpose
 
 ## Project setup
+
 ### Install dependencies
 
 ```
@@ -19,12 +18,6 @@ npm install
 npm run build
 ```
 
-### Generate key
-
-```
-php artisan key:generate
-```
-
 ### Migrate database
 
 ```
@@ -38,6 +31,11 @@ php artisan serve
 ```
 
 ## Features
+
+### Auth
+
+-   Login / Logut
+-   Reset Password
 
 ### Profile Panel
 

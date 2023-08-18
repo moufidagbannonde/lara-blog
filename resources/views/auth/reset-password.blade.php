@@ -6,15 +6,17 @@
 
         <x-validation-errors class="mb-4" />
 
+        @if (session('error'))
+        <div class="mb-4 font-medium text-sm text-red-600">
+            {{ session('error') }}
+        </div>
+        @endif
+
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
 
             <input type="hidden" name="token" value="{{ $token }}">
-
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            </div>
+            <input type="hidden" name="email" value="{{ $email }}">
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />

@@ -39,15 +39,16 @@ class ForgotPasswordController extends Controller
         return back()->with('message', 'We have emailed your password reset link!');
     }
 
-    public function showResetPassword($token)
+    public function showResetPassword($email, $token)
     {
-        return view('auth.reset-password', ['token' => $token]);
+        $email = decrypt($email);
+
+        return view('auth.reset-password', ['email' => $email, 'token' => $token]);
     }
 
     public function submitResetPassword(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|exists:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required'
         ]);

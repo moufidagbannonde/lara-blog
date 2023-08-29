@@ -11,7 +11,7 @@ class BlogController extends Controller
     {
         $posts = Post::where('status', 'public')
             ->orderBy('id', 'desc')
-            ->simplePaginate(4);
+            ->simplePaginate(12);
 
         return view('posts.index')->with('posts', $posts);
     }

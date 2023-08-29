@@ -17,7 +17,7 @@ class ProfileController extends Controller
     {
         $posts = Post::where('user_id', auth()->id())
             ->orderBy('id', 'desc')
-            ->simplePaginate(4);
+            ->simplePaginate(12);
         return view('profile.index')->with('posts', $posts);
     }
 

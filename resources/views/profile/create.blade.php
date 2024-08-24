@@ -22,15 +22,6 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
-            <select class="form-select" name="category">
-                <option selected disabled>Select Category</option>
-                @foreach($categories as $category)
-                <option value="{{ $category }}">{{ $category }}</option>
-                @endforeach
-            </select>
-        </div>
         @error('category')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror

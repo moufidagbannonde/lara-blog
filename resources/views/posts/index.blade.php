@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ substr($post->description, 0, 60) }}...</p>
-                    <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-success">View</a>
+                    <a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-success">Details</a>
                 </div>
             </div>
         </div>

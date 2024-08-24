@@ -21,7 +21,7 @@
     <!-- Navbar -->
     <nav class="navbar bg-body-tertiary">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('posts.index') }}">Lara-Blog</a>
+            <a class="navbar-brand" href="{{ route('posts.index') }}">Moufid Blog</a>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
                     <p class="d-inline">Welcome, {{ Auth::user()->name }}</p>

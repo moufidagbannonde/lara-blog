@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container mt-3">
-    <h1 class="text-center mb-3">Edit Post</h1>
+    <h1 class="text-center mb-3">Edit</h1>
     <form action="{{ route('profile.update', ['profile' => $post->id]) }}" method="post">
         @csrf
         @method('PUT')
         <input type="hidden" name="user_id" value="{{ Auth::id() }}">
         <div class="mb-3">
-            <label for="name" class="form-label">Title</label>
+            <label for="name" class="form-label">Titre</label>
             <input type="text" class="form-control" name="name" placeholder="Enter title" value="{{ old('name', $post->name) }}">
         </div>
         @error('name')
@@ -49,7 +49,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
-        <button type="submit" class="btn btn-primary mb-3">Edit Post</button>
+        <button type="submit" class="btn btn-primary mb-3">Modifier</button>
     </form>
 </div>
 @endsection

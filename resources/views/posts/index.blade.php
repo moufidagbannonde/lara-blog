@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title d-inline">{{ $post->name }}</h5>
-                    <p class="float-end text-muted fst-italic">Created by {{ $post->users->name }}</p>
+                    <p class="float-end text-muted">Created by {{ $post->users->name }}</p>
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ substr($post->description, 0, 60) }}...</p>
